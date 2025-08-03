@@ -24,22 +24,69 @@
             text-align: center;
             padding: 15px;
             box-sizing: border-box;
-            overflow: hidden;
             position: relative;
             cursor: default;
+            overflow-x: hidden;
         }
+        
+        /* Animated background elements */
+        .bg-element {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: 0;
+            animation: float 15s infinite ease-in-out;
+        }
+        .bg-element:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            background-color: #FFD700;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        .bg-element:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            background-color: #FF69B4;
+            top: 70%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+        .bg-element:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            background-color: #00BFFF;
+            top: 40%;
+            left: 5%;
+            animation-delay: 4s;
+        }
+        .bg-element:nth-child(4) {
+            width: 120px;
+            height: 120px;
+            background-color: #ADFF2F;
+            top: 20%;
+            left: 70%;
+            animation-delay: 6s;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
         #container {
             background-color: rgba(255, 255, 255, 0.98);
-            padding: 25px 35px;
+            padding: 20px 25px;
             border-radius: 25px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(255, 215, 0, 0.5);
-            max-width: 600px;
+            max-width: 90vw;
             width: 100%;
             border: 8px ridge #ffcc00;
             box-sizing: border-box;
             position: relative; 
             z-index: 2;
-            animation: bounceIn 1.5s ease-out;
+            animation: bounceIn 1.5s ease-out, gentleFloat 6s infinite ease-in-out;
+            margin-bottom: 20px;
         }
         @keyframes bounceIn {
             0%, 20%, 40%, 60%, 80%, 100% { transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); }
@@ -50,11 +97,15 @@
             80% { transform: scale3d(.97, .97, .97); }
             100% { opacity: 1; transform: scale3d(1, 1, 1); }
         }
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
         h1 {
             font-family: 'Sacramento', cursive;
             color: #8B0000;
-            margin-bottom: 25px;
-            font-size: clamp(2.5em, 8vw, 3.5em);
+            margin-bottom: 20px;
+            font-size: clamp(2em, 6vw, 3em);
             font-weight: 700;
             animation: textGlow 2s infinite alternate;
             text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 215, 0, 0.8);
@@ -64,13 +115,13 @@
             to { text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 215, 0, 1); }
         }
         #laxmiImage {
-            max-width: 90%;
+            max-width: 80%;
             height: auto;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             border-radius: 50%;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 215, 0, 0.7);
             border: 6px double #FFD700;
-            animation: imageZoomIn 2s ease-in-out;
+            animation: imageZoomIn 2s ease-in-out, imageFloat 8s infinite ease-in-out;
             transition: transform 0.3s ease;
         }
         #laxmiImage:hover {
@@ -80,37 +131,46 @@
             from { opacity: 0; transform: scale(0.5); }
             to { opacity: 1; transform: scale(1); }
         }
+        @keyframes imageFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+        }
         .shayari-container {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 140, 0, 0.2));
             border-radius: 20px;
-            padding: 20px;
-            margin: 20px 0;
+            padding: 15px;
+            margin: 15px 0;
             border-left: 5px solid #ffcc00;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             position: relative;
             overflow: hidden;
+            animation: shayariGlow 4s infinite alternate;
+        }
+        @keyframes shayariGlow {
+            from { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 0 10px rgba(255, 215, 0, 0.3); }
+            to { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 0 20px rgba(255, 215, 0, 0.5); }
         }
         .shayari-container::before {
             content: """;
             position: absolute;
             top: -20px;
             left: 10px;
-            font-size: 80px;
+            font-size: 60px;
             color: rgba(255, 215, 0, 0.3);
             font-family: 'Kalam', cursive;
         }
         .shayari-container::after {
             content: """;
             position: absolute;
-            bottom: -50px;
+            bottom: -40px;
             right: 10px;
-            font-size: 80px;
+            font-size: 60px;
             color: rgba(255, 215, 0, 0.3);
             font-family: 'Kalam', cursive;
         }
         .shayari-text {
             font-family: 'Kalam', cursive;
-            font-size: 1.4em;
+            font-size: 1.1em;
             color: #8B4513;
             font-weight: 700;
             line-height: 1.6;
@@ -124,40 +184,46 @@
         }
         label {
             display: block;
-            margin-bottom: 15px;
-            font-size: 1.3em;
+            margin-bottom: 10px;
+            font-size: 1.1em;
             color: #6a4f00;
             font-weight: 700;
         }
         input[type="text"] {
             width: calc(100% - 24px);
-            padding: 15px;
-            margin-bottom: 25px;
+            padding: 12px;
+            margin-bottom: 15px;
             border: 3px solid #ccc;
             border-radius: 12px;
-            font-size: 1.2em;
+            font-size: 1.1em;
             box-sizing: border-box;
             color: #333;
             background-color: #fffaf0;
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            animation: inputPulse 3s infinite alternate;
+        }
+        @keyframes inputPulse {
+            from { box-shadow: 0 0 5px rgba(255, 215, 0, 0.3); }
+            to { box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); }
         }
         input[type="text"]:focus {
             border-color: #d35400;
             outline: none;
-            box-shadow: 0 0 15px rgba(211, 84, 0, 0.5);
+            box-shadow: 0 0 15px rgba(211, 84, 0, 0.5), 0 0 30px rgba(255, 215, 0, 0.7);
+            animation: none;
         }
         .action-buttons {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
         }
         button {
             background: linear-gradient(135deg, #ffcc00, #ff9500);
             color: white;
-            padding: 16px 35px;
+            padding: 12px 25px;
             border: none;
             border-radius: 12px;
-            font-size: 1.3em;
+            font-size: 1.1em;
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
@@ -169,10 +235,25 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        button:hover::before {
+            left: 100%;
         }
         button i {
-            margin-right: 12px;
-            font-size: 1.6em;
+            margin-right: 10px;
+            font-size: 1.4em;
         }
         #whatsappShareBtn i {
             animation: iconPulse 1.5s infinite alternate;
@@ -197,32 +278,33 @@
             background: linear-gradient(135deg, #1DA851, #0F9641);
         }
         #generatedLinkContainer {
-            margin-top: 40px;
-            padding: 25px;
+            margin-top: 20px;
+            padding: 15px;
             background-color: #fff8dc;
             border: 3px dashed #ffb300;
             border-radius: 20px;
             display: none;
             box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
         }
         #generatedLinkContainer p {
             margin-top: 0;
-            font-size: 1.2em;
+            font-size: 1.1em;
             color: #795548;
             font-weight: 600;
         }
         #generatedLink {
             width: calc(100% - 20px);
-            padding: 14px;
+            padding: 10px;
             border: 2px solid #ffcc00;
             border-radius: 10px;
             background-color: #ffffe0;
-            font-size: 1.05em;
+            font-size: 0.9em;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
             cursor: pointer;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         #copyButton {
             background: linear-gradient(135deg, #ffcc00, #ff9500);
@@ -256,14 +338,19 @@
         .sender-info {
             background-color: rgba(255, 215, 0, 0.2);
             border-radius: 15px;
-            padding: 15px;
-            margin-bottom: 20px;
+            padding: 12px;
+            margin-bottom: 15px;
             border-left: 5px solid #ffcc00;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: slideIn 1s ease-in-out;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
         }
         .sender-info p {
             margin: 0;
-            font-size: 1.2em;
+            font-size: 1.1em;
             color: #8B0000;
             font-weight: 600;
         }
@@ -271,8 +358,8 @@
             position: absolute;
             top: -15px;
             right: -15px;
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             background: radial-gradient(circle, #ffcc00 0%, #ff9500 100%);
             border-radius: 50%;
             display: flex;
@@ -280,10 +367,15 @@
             justify-content: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             z-index: 3;
+            animation: spin 10s infinite linear;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         .rakhi-decoration::before {
             content: "🧵";
-            font-size: 2.5em;
+            font-size: 2em;
         }
         .rakhi-thread {
             position: absolute;
@@ -299,22 +391,22 @@
         .rakhi-thread::before, .rakhi-thread::after {
             content: "";
             position: absolute;
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             background-color: #ffcc00;
             border-radius: 50%;
         }
         .rakhi-thread::before {
             top: 20%;
-            left: -4px;
+            left: -3px;
         }
         .rakhi-thread::after {
             top: 40%;
-            left: -4px;
+            left: -3px;
         }
         .footer-message {
-            margin-top: 20px;
-            font-size: 1.1em;
+            margin-top: 15px;
+            font-size: 1em;
             color: #8B4513;
             font-weight: 600;
             animation: pulse 2s infinite;
@@ -330,48 +422,78 @@
             justify-content: center;
             width: 100%;
             max-width: 600px;
+            z-index: 5;
         }
+        /* Confetti effect */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f0f;
+            position: absolute;
+            animation: confetti-fall 3s linear forwards;
+            z-index: 4;
+        }
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        /* Mobile-specific adjustments */
         @media (max-width: 480px) {
             #container {
-                padding: 15px 20px;
+                padding: 15px;
+                max-width: 95vw;
             }
-            label, input[type="text"], button {
-                font-size: 1.1em;
-            }
-            input[type="text"] {
-                padding: 12px;
-            }
-            button {
-                padding: 14px 25px;
-            }
-            .rakhi-decoration {
-                width: 60px;
-                height: 60px;
-            }
-            .rakhi-decoration::before {
-                font-size: 2em;
+            h1 {
+                font-size: 1.8em;
             }
             .shayari-text {
-                font-size: 1.2em;
+                font-size: 1em;
+            }
+            input[type="text"] {
+                padding: 10px;
+                font-size: 1em;
+            }
+            button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+            .rakhi-decoration {
+                width: 50px;
+                height: 50px;
+            }
+            .rakhi-decoration::before {
+                font-size: 1.8em;
+            }
+            #generatedLink {
+                font-size: 0.85em;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Background elements -->
+    <div class="bg-element"></div>
+    <div class="bg-element"></div>
+    <div class="bg-element"></div>
+    <div class="bg-element"></div>
+    
     <div class="rakhi-thread"></div>
     
     <!-- First Ad (Above the container) -->
     <div class="ad-container">
         <script type="text/javascript">
             atOptions = {
-                'key' : '74165dbae938b8c0fe7162ba5eb3179b',
+                'key' : 'daf61e16b5a524095c467993ff44ef5d',
                 'format' : 'iframe',
-                'height' : 250,
-                'width' : 300,
+                'height' : 50,
+                'width' : 320,
                 'params' : {}
             };
         </script>
-        <script type="text/javascript" src="//waistcoatreferchemistry.com/74165dbae938b8c0fe7162ba5eb3179b/invoke.js"></script>
+        <script type="text/javascript" src="//waistcoatreferchemistry.com/daf61e16b5a524095c467993ff44ef5d/invoke.js"></script>
     </div>
     
     <div id="container">
@@ -409,14 +531,14 @@
     <div class="ad-container">
         <script type="text/javascript">
             atOptions = {
-                'key' : '74165dbae938b8c0fe7162ba5eb3179b',
+                'key' : 'daf61e16b5a524095c467993ff44ef5d',
                 'format' : 'iframe',
-                'height' : 250,
-                'width' : 300,
+                'height' : 50,
+                'width' : 320,
                 'params' : {}
             };
         </script>
-        <script type="text/javascript" src="//waistcoatreferchemistry.com/74165dbae938b8c0fe7162ba5eb3179b/invoke.js"></script>
+        <script type="text/javascript" src="//waistcoatreferchemistry.com/daf61e16b5a524095c467993ff44ef5d/invoke.js"></script>
     </div>
     
     <script>
@@ -451,8 +573,8 @@
         }
         
         function createFirecrackerEffect() {
-            const totalParticles = 150;
-            const baseDuration = 3000;
+            const totalParticles = 100;
+            const baseDuration = 2000;
             const colors = [
                 '#FFD700', '#FF4500', '#ADFF2F', '#00BFFF', '#EE82EE', 
                 '#FF69B4', '#9932CC', '#FFA07A', '#7FFF00', '#DDA0DD', 
@@ -461,9 +583,9 @@
             ];
             const spawnMinY = window.innerHeight * 0.8;
             const spawnMaxY = window.innerHeight;
-            const numWaves = 5;
+            const numWaves = 3;
             const particlesPerWave = totalParticles / numWaves;
-            const delayBetweenWaves = 300;
+            const delayBetweenWaves = 200;
             
             for (let wave = 0; wave < numWaves; wave++) {
                 setTimeout(() => {
@@ -471,7 +593,7 @@
                         const particle = document.createElement('div');
                         particle.classList.add('firecracker-particle');
                         
-                        const size = Math.random() * 25 + 10;
+                        const size = Math.random() * 15 + 5;
                         particle.style.width = `${size}px`;
                         particle.style.height = `${size}px`;
                         
@@ -482,7 +604,7 @@
                         particle.style.top = `${initialY}px`;
                         
                         const angle = Math.random() * Math.PI * 2;
-                        const distance = Math.random() * 800 + 300;
+                        const distance = Math.random() * 400 + 200;
                         
                         const targetX = initialX + distance * Math.cos(angle);
                         const targetY = initialY + (distance * Math.sin(angle) - (Math.random() * window.innerHeight * 0.7 + window.innerHeight * 0.2));
@@ -492,16 +614,49 @@
                         particle.style.setProperty('--target-x', `${targetX - initialX}px`);
                         particle.style.setProperty('--target-y', `${targetY - initialY}px`);
                         particle.style.setProperty('--particle-color', colors[Math.floor(Math.random() * colors.length)]);
-                        particle.style.setProperty('--duration', `${baseDuration + Math.random() * 1000}ms`);
-                        particle.style.animationDelay = `${Math.random() * 500}ms`;
+                        particle.style.setProperty('--duration', `${baseDuration + Math.random() * 500}ms`);
+                        particle.style.animationDelay = `${Math.random() * 300}ms`;
                         
                         document.body.appendChild(particle);
                         
                         setTimeout(() => {
                             particle.remove();
-                        }, baseDuration + 1500);
+                        }, baseDuration + 1000);
                     }
                 }, wave * delayBetweenWaves);
+            }
+        }
+        
+        // Confetti effect function
+        function createConfettiEffect() {
+            const colors = ['#FFD700', '#FF4500', '#ADFF2F', '#00BFFF', '#EE82EE', '#FF69B4'];
+            const confettiCount = 100;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti');
+                    
+                    // Random properties
+                    const size = Math.random() * 10 + 5;
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    const left = Math.random() * 100;
+                    const animationDuration = Math.random() * 3 + 2;
+                    
+                    confetti.style.width = `${size}px`;
+                    confetti.style.height = `${size}px`;
+                    confetti.style.backgroundColor = color;
+                    confetti.style.left = `${left}%`;
+                    confetti.style.top = '-20px';
+                    confetti.style.animationDuration = `${animationDuration}s`;
+                    
+                    document.body.appendChild(confetti);
+                    
+                    // Remove after animation completes
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, animationDuration * 1000);
+                }, i * 30);
             }
         }
 
@@ -538,6 +693,7 @@
             }
             
             createFirecrackerEffect();
+            createConfettiEffect(); // Add confetti effect when button is clicked
             
             const currentBaseUrl = window.location.origin + window.location.pathname;
             const encodedUserName = encodeURIComponent(userName);
@@ -570,16 +726,5 @@
             }
         }
     </script>
-    
-    <script type="text/javascript">
-        atOptions = {
-            'key' : 'daf61e16b5a524095c467993ff44ef5d',
-            'format' : 'iframe',
-            'height' : 50,
-            'width' : 320,
-            'params' : {}
-        };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/daf61e16b5a524095c467993ff44ef5d/invoke.js"></script>
 </body>
 </html>
