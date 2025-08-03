@@ -1,3 +1,13 @@
+<script type="text/javascript">
+	atOptions = {
+		'key' : 'a0d46f126ff97cb7148b0acfc6703ff0',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//waistcoatreferchemistry.com/a0d46f126ff97cb7148b0acfc6703ff0/invoke.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -416,14 +426,6 @@
             50% { opacity: 1; }
             100% { opacity: 0.7; }
         }
-        .ad-container {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            max-width: 600px;
-            z-index: 5;
-        }
         /* Confetti effect */
         .confetti {
             position: absolute;
@@ -482,20 +484,6 @@
     
     <div class="rakhi-thread"></div>
     
-    <!-- First Ad (Above the container) -->
-    <div class="ad-container">
-        <script type="text/javascript">
-            atOptions = {
-                'key' : 'daf61e16b5a524095c467993ff44ef5d',
-                'format' : 'iframe',
-                'height' : 50,
-                'width' : 320,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//waistcoatreferchemistry.com/daf61e16b5a524095c467993ff44ef5d/invoke.js"></script>
-    </div>
-    
     <div id="container">
         <div class="rakhi-decoration"></div>
         <h1 id="greetingMessage">रक्षाबंधन की हार्दिक शुभकामनाएं!</h1>
@@ -525,20 +513,6 @@
         <div class="footer-message">
             भाई-बहन का प्यार हमेशा बना रहे 🙏
         </div>
-    </div>
-    
-    <!-- Second Ad (Below the container) -->
-    <div class="ad-container">
-        <script type="text/javascript">
-            atOptions = {
-                'key' : 'daf61e16b5a524095c467993ff44ef5d',
-                'format' : 'iframe',
-                'height' : 50,
-                'width' : 320,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//waistcoatreferchemistry.com/daf61e16b5a524095c467993ff44ef5d/invoke.js"></script>
     </div>
     
     <script>
@@ -589,142 +563,18 @@
             
             for (let wave = 0; wave < numWaves; wave++) {
                 setTimeout(() => {
-                    for (let i = 0; i < particlesPerWave; i++) {
-                        const particle = document.createElement('div');
-                        particle.classList.add('firecracker-particle');
-                        
-                        const size = Math.random() * 15 + 5;
-                        particle.style.width = `${size}px`;
-                        particle.style.height = `${size}px`;
-                        
-                        const initialX = Math.random() * window.innerWidth;
-                        const initialY = Math.random() * (spawnMaxY - spawnMinY) + spawnMinY;
-                        
-                        particle.style.left = `${initialX}px`;
-                        particle.style.top = `${initialY}px`;
-                        
-                        const angle = Math.random() * Math.PI * 2;
-                        const distance = Math.random() * 400 + 200;
-                        
-                        const targetX = initialX + distance * Math.cos(angle);
-                        const targetY = initialY + (distance * Math.sin(angle) - (Math.random() * window.innerHeight * 0.7 + window.innerHeight * 0.2));
-                        
-                        particle.style.setProperty('--initial-x', '0px');
-                        particle.style.setProperty('--initial-y', '0px');
-                        particle.style.setProperty('--target-x', `${targetX - initialX}px`);
-                        particle.style.setProperty('--target-y', `${targetY - initialY}px`);
-                        particle.style.setProperty('--particle-color', colors[Math.floor(Math.random() * colors.length)]);
-                        particle.style.setProperty('--duration', `${baseDuration + Math.random() * 500}ms`);
-                        particle.style.animationDelay = `${Math.random() * 300}ms`;
-                        
-                        document.body.appendChild(particle);
-                        
-                        setTimeout(() => {
-                            particle.remove();
-                        }, baseDuration + 1000);
-                    }
-                }, wave * delayBetweenWaves);
-            }
-        }
-        
-        // Confetti effect function
-        function createConfettiEffect() {
-            const colors = ['#FFD700', '#FF4500', '#ADFF2F', '#00BFFF', '#EE82EE', '#FF69B4'];
-            const confettiCount = 100;
-            
-            for (let i = 0; i < confettiCount; i++) {
-                setTimeout(() => {
-                    const confetti = document.createElement('div');
-                    confetti.classList.add('confetti');
-                    
-                    // Random properties
-                    const size = Math.random() * 10 + 5;
-                    const color = colors[Math.floor(Math.random() * colors.length)];
-                    const left = Math.random() * 100;
-                    const animationDuration = Math.random() * 3 + 2;
-                    
-                    confetti.style.width = `${size}px`;
-                    confetti.style.height = `${size}px`;
-                    confetti.style.backgroundColor = color;
-                    confetti.style.left = `${left}%`;
-                    confetti.style.top = '-20px';
-                    confetti.style.animationDuration = `${animationDuration}s`;
-                    
-                    document.body.appendChild(confetti);
-                    
-                    // Remove after animation completes
-                    setTimeout(() => {
-                        confetti.remove();
-                    }, animationDuration * 1000);
-                }, i * 30);
-            }
-        }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            createFirecrackerEffect();
-            const params = new URLSearchParams(window.location.search);
-            const senderName = params.get('sender');
-            
-            // Set random shayari
-            shayariText.textContent = getRandomShayari();
-            
-            if (senderName) {
-                greetingMessage.textContent = "रक्षाबंधन की हार्दिक शुभकामनाएं!";
-                senderMessage.textContent = `यह शुभकामना ${decodeURIComponent(senderName)} ने भेजी है`;
-                senderInfo.style.display = 'block';
-                inputLabel.textContent = "अपना शुभ नाम दर्ज करें और अपने दोस्तों को भेजें:";
-                userNameInput.placeholder = "जैसे: आपका नाम";
-                userNameInput.value = "";
-                generatedLinkContainer.style.display = 'none';
-            } else {
-                greetingMessage.textContent = "रक्षाबंधन की हार्दिक शुभकामनाएं!";
-                senderInfo.style.display = 'none';
-                inputLabel.textContent = "अपना या जिसके लिए लिंक बना रहे हैं, उनका शुभ नाम दर्ज करें:";
-                userNameInput.placeholder = "जैसे: राहुल";
-                generatedLinkContainer.style.display = 'none';
-            }
-        });
-        
-        whatsappShareBtn.addEventListener('click', () => {
-            const userName = userNameInput.value.trim();
-            if (userName === "") {
-                alert("कृपया अपना शुभ नाम दर्ज करें!");
-                return;
-            }
-            
-            createFirecrackerEffect();
-            createConfettiEffect(); // Add confetti effect when button is clicked
-            
-            const currentBaseUrl = window.location.origin + window.location.pathname;
-            const encodedUserName = encodeURIComponent(userName);
-            sharableLink = `${currentBaseUrl}?sender=${encodedUserName}`;
-            generatedLinkInput.value = sharableLink;
-            generatedLinkContainer.style.display = 'block';
-            
-            const shareText = `🎉 आपको और आपके परिवार को ${userName} की ओर से रक्षाबंधन की हार्दिक शुभकामनाएं! इस विशेष कार्ड को देखें:`;
-            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText + '\n' + sharableLink)}`;
-            
-            window.open(whatsappUrl, '_blank');
-        });
-        
-        function copyLink() {
-            generatedLinkInput.select();
-            generatedLinkInput.setSelectionRange(0, 99999);
-            
-            try {
-                navigator.clipboard.writeText(generatedLinkInput.value)
-                    .then(() => {
-                        alert("शुभ लिंक कॉपी हो गया है! आप इसे किसी को भी भेज सकते हैं!");
-                    })
-                    .catch(err => {
-                        console.error('लिंक कॉपी करने में त्रुटि:', err);
-                        alert("लिंक कॉपी नहीं हो सका। कृपया मैन्युअल रूप से कॉपी करें।");
-                    });
-            } catch (err) {
-                console.error('क्लिपबोर्ड API उपलब्ध नहीं:', err);
-                alert("लिंक कॉपी नहीं हो सका। कृपया मैन्युअल रूप से कॉपी करें (Ctrl+C / Cmd+C)।");
-            }
-        }
-    </script>
-</body>
-</html>
+             <script type="text/javascript">
+	atOptions = {
+		'key' : 'a0d46f126ff97cb7148b0acfc6703ff0',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//waistcoatreferchemistry.com/a0d46f126ff97cb7148b0acfc6703ff0/invoke.js"></script>       
+
+
+                    
+ 
