@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>अति शुभ रक्षाबंधन!</title>
+    <title>रक्षाबंधन की हार्दिक शुभकामनाएं!</title>
     <!-- Font Awesome for WhatsApp icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts for more decorative text -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sacramento&family=Noto+Sans+Devanagari:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sacramento&family=Noto+Sans+Devanagari:wght@400;700&family=Kalam:wght@300;400;700&display=swap">
     <style>
         body {
             font-family: 'Noto Sans Devanagari', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -79,6 +79,48 @@
         @keyframes imageZoomIn {
             from { opacity: 0; transform: scale(0.5); }
             to { opacity: 1; transform: scale(1); }
+        }
+        .shayari-container {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 140, 0, 0.2));
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #ffcc00;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .shayari-container::before {
+            content: """;
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            font-size: 80px;
+            color: rgba(255, 215, 0, 0.3);
+            font-family: 'Kalam', cursive;
+        }
+        .shayari-container::after {
+            content: """;
+            position: absolute;
+            bottom: -50px;
+            right: 10px;
+            font-size: 80px;
+            color: rgba(255, 215, 0, 0.3);
+            font-family: 'Kalam', cursive;
+        }
+        .shayari-text {
+            font-family: 'Kalam', cursive;
+            font-size: 1.4em;
+            color: #8B4513;
+            font-weight: 700;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         label {
             display: block;
@@ -243,6 +285,45 @@
             content: "🧵";
             font-size: 2.5em;
         }
+        .rakhi-thread {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, #ffcc00, transparent);
+            transform: translateX(-50%);
+            z-index: 1;
+            opacity: 0.7;
+        }
+        .rakhi-thread::before, .rakhi-thread::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ffcc00;
+            border-radius: 50%;
+        }
+        .rakhi-thread::before {
+            top: 20%;
+            left: -4px;
+        }
+        .rakhi-thread::after {
+            top: 40%;
+            left: -4px;
+        }
+        .footer-message {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #8B4513;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
         @media (max-width: 480px) {
             #container {
                 padding: 15px 20px;
@@ -263,14 +344,22 @@
             .rakhi-decoration::before {
                 font-size: 2em;
             }
+            .shayari-text {
+                font-size: 1.2em;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="rakhi-thread"></div>
     <div id="container">
         <div class="rakhi-decoration"></div>
-        <h1 id="greetingMessage">अति शुभ रक्षाबंधन! 🎉</h1>
+        <h1 id="greetingMessage">रक्षाबंधन की हार्दिक शुभकामनाएं!</h1>
         <img id="laxmiImage" src="laxmi.gif" alt="Laxmi Ji Rakhi Animation">
+        
+        <div class="shayari-container">
+            <p id="shayariText" class="shayari-text"></p>
+        </div>
         
         <div id="senderInfo" class="sender-info" style="display: none;">
             <p id="senderMessage"></p>
@@ -288,6 +377,10 @@
             <input type="text" id="generatedLink" readonly onclick="copyLink()">
             <button id="copyButton" onclick="copyLink()"><i class="fas fa-copy"></i> कॉपी करें</button>
         </div>
+        
+        <div class="footer-message">
+            भाई-बहन का प्यार हमेशा बना रहे 🙏
+        </div>
     </div>
     
     <script>
@@ -300,7 +393,26 @@
         const senderInfo = document.getElementById('senderInfo');
         const senderMessage = document.getElementById('senderMessage');
         const inputLabel = document.getElementById('inputLabel');
+        const shayariText = document.getElementById('shayariText');
         let sharableLink = "";
+        
+        // Array of shayari for Raksha Bandhan
+        const shayariArray = [
+            "बहना के लिए रक्षा सूत्र है, भाई के लिए प्यार का बंधन है। रक्षाबंधन का त्योहार है, यही तो जीवन का अनमोल उपहार है।",
+            "राखी का त्योहार है, प्यार का त्योहार है। भाई-बहन के रिश्ते को और मजबूत बनाने का त्योहार है।",
+            "बहन की ममता, भाई का साथ, यही है जीवन की सबसे अनमोल निधि। रक्षाबंधन की शुभकामनाएं!",
+            "राखी बांधकर बहन ने मांगा वादा, भाई ने दिया साथ निभाने का वादा। यही है रक्षाबंधन का सच्चा अर्थ।",
+            "बहन का प्यार, भाई का आशीर्वाद, यही है रक्षाबंधन का संदेश। इस प्यारे रिश्ते को सदैव सलामत रखना।",
+            "राखी का धागा और भाई का वादा, यही है जीवन की सबसे खास बात। रक्षाबंधन की हार्दिक शुभकामनाएं!",
+            "बहन की यादें, भाई का साथ, यही है जीवन की सबसे प्यारी बात। रक्षाबंधन पर भेजा यह संदेश।",
+            "राखी बांधकर बहन ने कहा, भाई तुम हमेशा मेरे साथ रहना। भाई ने दिया वादा, हमेशा तुम्हारा ख्याल रखना।"
+        ];
+        
+        // Function to get a random shayari
+        function getRandomShayari() {
+            const randomIndex = Math.floor(Math.random() * shayariArray.length);
+            return shayariArray[randomIndex];
+        }
         
         function createFirecrackerEffect() {
             const totalParticles = 150;
@@ -362,8 +474,11 @@
             const params = new URLSearchParams(window.location.search);
             const senderName = params.get('sender');
             
+            // Set random shayari
+            shayariText.textContent = getRandomShayari();
+            
             if (senderName) {
-                greetingMessage.textContent = `शुभ रक्षाबंधन! 🎉`;
+                greetingMessage.textContent = "रक्षाबंधन की हार्दिक शुभकामनाएं!";
                 senderMessage.textContent = `यह शुभकामना ${decodeURIComponent(senderName)} ने भेजी है`;
                 senderInfo.style.display = 'block';
                 inputLabel.textContent = "अपना शुभ नाम दर्ज करें और अपने दोस्तों को भेजें:";
@@ -371,7 +486,7 @@
                 userNameInput.value = "";
                 generatedLinkContainer.style.display = 'none';
             } else {
-                greetingMessage.textContent = "अति शुभ रक्षाबंधन! 🎉";
+                greetingMessage.textContent = "रक्षाबंधन की हार्दिक शुभकामनाएं!";
                 senderInfo.style.display = 'none';
                 inputLabel.textContent = "अपना या जिसके लिए लिंक बना रहे हैं, उनका शुभ नाम दर्ज करें:";
                 userNameInput.placeholder = "जैसे: राहुल";
@@ -394,7 +509,7 @@
             generatedLinkInput.value = sharableLink;
             generatedLinkContainer.style.display = 'block';
             
-            const shareText = `🎉 आपको और आपके परिवार को ${userName} की ओर से अति शुभ रक्षाबंधन की हार्दिक शुभकामनाएँ! इस विशेष कार्ड को देखें:`;
+            const shareText = `🎉 आपको और आपके परिवार को ${userName} की ओर से रक्षाबंधन की हार्दिक शुभकामनाएं! इस विशेष कार्ड को देखें:`;
             const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText + '\n' + sharableLink)}`;
             
             window.open(whatsappUrl, '_blank');
