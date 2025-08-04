@@ -3,591 +3,466 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>रक्षाबंधन की शुभकामनाएं</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <title>रक्षाबंधन की शुभकामनाएं!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Kalam:wght@700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --gold: #FFD700;
+            --red: #E21717;
+            --pink: #FF6666;
+            --blue: #1DA1F2;
+            --green: #1DA851;
+            --dark: #4a2c00;
         }
         
         body {
-            font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 25%, #fbc2eb 50%, #a6c1ee 75%, #c2e9fb 100%);
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #ffeef8 100%);
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            position: relative;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
         }
         
-        /* Floating animation elements */
-        .floating-element {
-            position: absolute;
+        .firework {
+            position: fixed;
+            width: 5px;
+            height: 5px;
             border-radius: 50%;
-            opacity: 0.15;
-            z-index: 0;
-            animation: float 20s infinite ease-in-out;
+            box-shadow: 0 0 10px 5px var(--color);
+            animation: firework-animation var(--duration) ease-out;
+            opacity: 0;
+            transform: translate(var(--x), var(--y));
         }
         
-        .floating-element:nth-child(1) {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(45deg, #FFD700, #FF8C00);
-            top: 10%;
-            left: 5%;
-            animation-delay: 0s;
+        @keyframes firework-animation {
+            0% { transform: translate(0, 0); opacity: 1; }
+            100% { transform: translate(var(--tx), var(--ty)); opacity: 0; }
         }
         
-        .floating-element:nth-child(2) {
-            width: 150px;
-            height: 150px;
-            background: linear-gradient(45deg, #FF69B4, #FF1493);
-            top: 70%;
-            right: 5%;
-            animation-delay: 2s;
-        }
-        
-        .floating-element:nth-child(3) {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(45deg, #00BFFF, #1E90FF);
-            bottom: 10%;
-            left: 15%;
-            animation-delay: 4s;
+        .container {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 30px;
+            position: relative;
+            z-index: 10;
+            border: 8px solid var(--gold);
+            animation: float 3s ease-in-out infinite;
+            overflow: hidden;
         }
         
         @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
         
-        .main-container {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-            max-width: 500px;
-            width: 100%;
-            padding: 30px;
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
-            transform: translateY(0);
-            transition: transform 0.5s ease;
-        }
-        
-        .main-container:hover {
-            transform: translateY(-10px);
-        }
-        
-        .rakhi-thread {
+        .container::before {
+            content: "";
             position: absolute;
-            top: 0;
-            left: 50%;
-            width: 3px;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent, #FFD700, transparent);
-            transform: translateX(-50%);
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px dashed var(--gold);
+            border-radius: 25px;
+            animation: rotate 20s linear infinite;
             z-index: -1;
         }
         
-        .rakhi-thread::before, .rakhi-thread::after {
-            content: "";
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background-color: #FFD700;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #FFD700;
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
-        .rakhi-thread::before {
-            top: 20%;
-            left: -4.5px;
-        }
-        
-        .rakhi-thread::after {
-            top: 40%;
-            left: -4.5px;
-        }
-        
-        .header {
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: var(--red);
             text-align: center;
-            margin-bottom: 25px;
-        }
-        
-        .header h1 {
+            margin: 0 0 20px;
             font-size: 2.5rem;
-            color: #8B0000;
-            margin-bottom: 10px;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
             position: relative;
-            display: inline-block;
         }
         
-        .header h1::after {
+        h1::after {
             content: "";
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
+            display: block;
+            width: 100px;
             height: 3px;
-            background: linear-gradient(90deg, #FFD700, #FF8C00, #FFD700);
+            background: linear-gradient(to right, var(--gold), var(--red), var(--gold));
+            margin: 10px auto;
             border-radius: 3px;
         }
         
-        .image-container {
-            text-align: center;
-            margin-bottom: 25px;
-            position: relative;
-        }
-        
-        .image-container img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border: 5px solid #FFD700;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .image-container:hover img {
-            transform: scale(1.05) rotate(5deg);
-        }
-        
-        .shayari-container {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 140, 0, 0.2));
+        .rakhi-img {
+            width: 100%;
+            max-height: 250px;
+            object-fit: contain;
             border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 25px;
-            position: relative;
-            border-left: 4px solid #FFD700;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 5px solid var(--gold);
+            transition: transform 0.3s;
         }
         
-        .shayari-container::before {
-            content: """;
+        .rakhi-img:hover {
+            transform: scale(1.02);
+        }
+        
+        .shayari-box {
+            background: linear-gradient(to right, #fff9e6, #fff0cc);
+            padding: 15px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid var(--gold);
+            position: relative;
+            font-family: 'Kalam', cursive;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #5a3e1b;
+        }
+        
+        .shayari-box::before, .shayari-box::after {
+            content: '"';
+            font-size: 50px;
+            color: rgba(255, 215, 0, 0.3);
             position: absolute;
+            font-family: serif;
+        }
+        
+        .shayari-box::before {
             top: -15px;
             left: 10px;
-            font-size: 60px;
-            color: rgba(255, 215, 0, 0.3);
-            font-family: serif;
         }
         
-        .shayari-container::after {
-            content: """;
-            position: absolute;
-            bottom: -40px;
+        .shayari-box::after {
+            bottom: -35px;
             right: 10px;
-            font-size: 60px;
-            color: rgba(255, 215, 0, 0.3);
-            font-family: serif;
         }
         
-        .shayari-text {
-            font-size: 1.2rem;
-            color: #8B4513;
-            line-height: 1.6;
-            font-weight: 600;
-            position: relative;
-            z-index: 1;
+        .input-group {
+            margin: 20px 0;
         }
         
-        .sender-info {
-            background-color: rgba(255, 215, 0, 0.15);
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-left: 4px solid #FFD700;
-            display: none;
-        }
-        
-        .sender-info p {
-            font-size: 1.1rem;
-            color: #8B0000;
-            font-weight: 600;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
+        label {
             display: block;
             margin-bottom: 8px;
-            font-size: 1.1rem;
-            color: #333;
-            font-weight: 600;
+            font-weight: bold;
+            color: var(--dark);
         }
         
-        .form-group input {
+        input {
             width: 100%;
             padding: 12px 15px;
             border: 2px solid #ddd;
-            border-radius: 30px;
+            border-radius: 10px;
             font-size: 1rem;
-            color: #333;
-            background-color: #f9f9f9;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
+            background-color: #fffaf0;
         }
         
-        .form-group input:focus {
-            border-color: #FFD700;
-            background-color: #fff;
+        input:focus {
             outline: none;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-        }
-        
-        .btn-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
         
         .btn {
-            padding: 12px 20px;
-            border: none;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-size: 1rem;
+            margin: 5px 0;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn i {
+            margin-right: 10px;
         }
         
         .btn-whatsapp {
-            background: linear-gradient(45deg, #25D366, #128C7E);
+            background: linear-gradient(to right, #25D366, #128C7E);
             color: white;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
         }
         
         .btn-whatsapp:hover {
+            background: linear-gradient(to right, #128C7E, #075E54);
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
         
         .btn-copy {
-            background: linear-gradient(45deg, #FFD700, #FFA500);
-            color: #333;
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
-            display: none;
+            background: linear-gradient(to right, var(--gold), #FFA500);
+            color: var(--dark);
         }
         
         .btn-copy:hover {
+            background: linear-gradient(to right, #FFA500, #FF8C00);
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
         }
         
-        .link-container {
+        .link-box {
             margin-top: 20px;
             padding: 15px;
-            background-color: #f8f8f8;
-            border-radius: 15px;
-            border: 2px dashed #FFD700;
+            background-color: #fff9e6;
+            border-radius: 10px;
+            border: 2px dashed var(--gold);
             display: none;
         }
         
-        .link-container p {
-            font-size: 1rem;
-            color: #555;
-            margin-bottom: 10px;
-            font-weight: 600;
+        .link-box p {
+            margin-top: 0;
+            font-weight: bold;
         }
         
-        .link-container input {
+        #generatedLink {
             width: 100%;
-            padding: 10px 15px;
-            border: 2px solid #ddd;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            color: #333;
-            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
             margin-bottom: 10px;
+            cursor: pointer;
+        }
+        
+        .floating-rakhi {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-image: url('https://i.ibb.co/7NknJCnM/laxmi-gif.gif');
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 1;
+            animation: floatRakhi 15s linear infinite;
+            opacity: 0.7;
+        }
+        
+        @keyframes floatRakhi {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50vw, 20vh) rotate(90deg); }
+            50% { transform: translate(80vw, 40vh) rotate(180deg); }
+            75% { transform: translate(30vw, 60vh) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
         }
         
         .footer {
-            text-align: center;
             margin-top: 20px;
-            font-size: 1rem;
-            color: #8B4513;
-            font-weight: 600;
+            font-style: italic;
+            color: #777;
+            text-align: center;
         }
         
-        .footer i {
-            color: #e91e63;
+        /* Ad Container Styles */
+        .ad-container {
+            width: 100%;
+            max-width: 320px;
+            margin: 10px auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         
-        /* Rakhi decoration */
-        .rakhi-decoration {
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            width: 80px;
-            height: 80px;
-            background: radial-gradient(circle, #FFD700, #FFA500);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            z-index: 2;
+        .top-ad {
+            margin-bottom: 15px;
         }
         
-        .rakhi-decoration::before {
-            content: "🧵";
-            font-size: 2.5rem;
+        .bottom-ad {
+            margin-top: 15px;
         }
         
-        /* Mobile responsiveness */
-        @media (max-width: 480px) {
-            .header h1 {
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            h1 {
                 font-size: 2rem;
             }
             
-            .image-container img {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .shayari-text {
-                font-size: 1rem;
-            }
-            
-            .main-container {
-                padding: 20px;
-            }
-        }
-        
-        /* Animation for particles */
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, #FFD700, transparent);
-            pointer-events: none;
-            opacity: 0;
-            z-index: 0;
-        }
-        
-        @keyframes particle-animation {
-            0% {
-                transform: translate(0, 0);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(var(--tx), var(--ty));
-                opacity: 0;
+            .rakhi-img {
+                max-height: 200px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Floating elements -->
-    <div class="floating-element"></div>
-    <div class="floating-element"></div>
-    <div class="floating-element"></div>
-    
-    <div class="main-container">
-        <div class="rakhi-thread"></div>
-        <div class="rakhi-decoration"></div>
+    <!-- Top Ad -->
+    <div class="ad-container top-ad">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : 'a0d46f126ff97cb7148b0acfc6703ff0',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//waistcoatreferchemistry.com/a0d46f126ff97cb7148b0acfc6703ff0/invoke.js"></script>
+    </div>
+
+    <!-- Floating Rakhis -->
+    <div class="floating-rakhi" style="top:10%; left:10%; animation-delay: 0s;"></div>
+    <div class="floating-rakhi" style="top:30%; left:80%; animation-delay: 3s;"></div>
+    <div class="floating-rakhi" style="top:70%; left:20%; animation-delay: 6s;"></div>
+
+    <div class="container">
+        <h1>रक्षाबंधन की हार्दिक शुभकामनाएं!</h1>
         
-        <div class="header">
-            <h1>रक्षाबंधन की शुभकामनाएं</h1>
+        <img src="https://i.ibb.co/7NknJCnM/laxmi-gif.gif" alt="रक्षाबंधन विशेष" class="rakhi-img">
+        
+        <div class="shayari-box" id="shayariText">
+            बहन की ममता, भाई का साथ, यही है जीवन की सबसे अनमोल निधि। रक्षाबंधन की शुभकामनाएं!
         </div>
         
-        <div class="image-container">
-            <img src="https://picsum.photos/seed/rakshabandhan/300/300.jpg" alt="रक्षाबंधन">
+        <div class="input-group">
+            <label for="userName">अपना नाम दर्ज करें:</label>
+            <input type="text" id="userName" placeholder="जैसे: राहुल">
         </div>
         
-        <div class="shayari-container">
-            <p class="shayari-text" id="shayariText">बहना के लिए रक्षा सूत्र है, भाई के लिए प्यार का बंधन है। रक्षाबंधन का त्योहार है, यही तो जीवन का अनमोल उपहार है।</p>
-        </div>
+        <button class="btn btn-whatsapp" id="shareBtn">
+            <i class="fab fa-whatsapp"></i> WhatsApp पर शेयर करें
+        </button>
         
-        <div class="sender-info" id="senderInfo">
-            <p id="senderMessage"></p>
-        </div>
-        
-        <div class="form-group">
-            <label for="userNameInput" id="inputLabel">अपना नाम दर्ज करें:</label>
-            <input type="text" id="userNameInput" placeholder="जैसे: राहुल">
-        </div>
-        
-        <div class="btn-container">
-            <button class="btn btn-whatsapp" id="whatsappShareBtn">
-                <i class="fab fa-whatsapp"></i>
-                WhatsApp पर शेयर करें
-            </button>
-            <button class="btn btn-copy" id="copyButton">
-                <i class="fas fa-copy"></i>
-                लिंक कॉपी करें
-            </button>
-        </div>
-        
-        <div class="link-container" id="linkContainer">
-            <p>यह लिंक कॉपी करें:</p>
+        <div class="link-box" id="linkBox">
+            <p>या यह लिंक कॉपी करें:</p>
             <input type="text" id="generatedLink" readonly>
+            <button class="btn btn-copy" id="copyBtn">
+                <i class="far fa-copy"></i> कॉपी करें
+            </button>
         </div>
         
-        <div class="footer">
-            <i class="fas fa-heart"></i> भाई-बहन का प्यार हमेशा बना रहे <i class="fas fa-heart"></i>
-        </div>
+        <p class="footer">भाई-बहन का प्यार हमेशा बना रहे ❤️</p>
     </div>
     
+    <!-- Bottom Ad -->
+    <div class="ad-container bottom-ad">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : 'a0d46f126ff97cb7148b0acfc6703ff0',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//waistcoatreferchemistry.com/a0d46f126ff97cb7148b0acfc6703ff0/invoke.js"></script>
+    </div>
+
     <script>
-        // Shayari array
-        const shayariArray = [
-            "बहना के लिए रक्षा सूत्र है, भाई के लिए प्यार का बंधन है। रक्षाबंधन का त्योहार है, यही तो जीवन का अनमोल उपहार है।",
-            "राखी का त्योहार है, प्यार का त्योहार है। भाई-बहन के रिश्ते को और मजबूत बनाने का त्योहार है।",
-            "बहन की ममता, भाई का साथ, यही है जीवन की सबसे अनमोल निधि। रक्षाबंधन की शुभकामनाएं!",
-            "राखी बांधकर बहन ने मांगा वादा, भाई ने दिया साथ निभाने का वादा। यही है रक्षाबंधन का सच्चा अर्थ।",
-            "बहन का प्यार, भाई का आशीर्वाद, यही है रक्षाबंधन का संदेश। इस प्यारे रिश्ते को सदैव सलामत रखना।",
-            "राखी का धागा और भाई का वादा, यही है जीवन की सबसे खास बात। रक्षाबंधन की हार्दिक शुभकामनाएं!",
-            "बहन की यादें, भाई का साथ, यही है जीवन की सबसे प्यारी बात। रक्षाबंधन पर भेजा यह संदेश।",
-            "राखी बांधकर बहन ने कहा, भाई तुम हमेशा मेरे साथ रहना। भाई ने दिया वादा, हमेशा तुम्हारा ख्याल रखना।"
+        // Shayari collection
+        const shayaris = [
+            "राखी का प्यार, भाई का वादा, यही है जीवन की सबसे खास बात।",
+            "बहन की डोर, भाई के हाथ, यही है रिश्तों की शान।",
+            "राखी के इस पावन पर्व पर, भाई-बहन का प्यार हो और बढ़े।",
+            "बहन का आशीर्वाद, भाई का साथ, यही है जीवन का सच्चा साथ।",
+            "राखी का धागा नहीं टूटने देंगे, भाई-बहन का प्यार नहीं छूटने देंगे।"
         ];
         
-        // Get random shayari
-        function getRandomShayari() {
-            const randomIndex = Math.floor(Math.random() * shayariArray.length);
-            return shayariArray[randomIndex];
-        }
+        // Fireworks colors
+        const colors = ['#FFD700', '#FF0000', '#00FF00', '#0000FF', '#FF00FF', '#00FFFF', '#FFA500'];
         
-        // Create particle effect
-        function createParticleEffect(x, y) {
-            const colors = ['#FFD700', '#FF8C00', '#FF69B4', '#00BFFF', '#1E90FF'];
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                const size = Math.random() * 8 + 4;
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                const angle = Math.random() * Math.PI * 2;
-                const distance = Math.random() * 100 + 50;
-                
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.backgroundColor = color;
-                particle.style.left = `${x}px`;
-                particle.style.top = `${y}px`;
-                
-                const tx = Math.cos(angle) * distance;
-                const ty = Math.sin(angle) * distance;
-                
-                particle.style.setProperty('--tx', `${tx}px`);
-                particle.style.setProperty('--ty', `${ty}px`);
-                particle.style.animation = `particle-animation ${Math.random() * 1 + 0.5}s forwards`;
-                
-                document.body.appendChild(particle);
-                
+        // Random shayari on load
+        document.getElementById('shayariText').textContent = shayaris[Math.floor(Math.random() * shayaris.length)];
+        
+        // Create fireworks
+        function createFireworks() {
+            for (let i = 0; i < 30; i++) {
                 setTimeout(() => {
-                    particle.remove();
-                }, 1500);
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    const x = Math.random() * window.innerWidth;
+                    const y = Math.random() * window.innerHeight;
+                    
+                    for (let j = 0; j < 20; j++) {
+                        const firework = document.createElement('div');
+                        firework.className = 'firework';
+                        firework.style.setProperty('--color', color);
+                        firework.style.setProperty('--duration', `${Math.random() * 1000 + 1000}ms`);
+                        firework.style.setProperty('--x', `${x}px`);
+                        firework.style.setProperty('--y', `${y}px`);
+                        
+                        const angle = Math.random() * Math.PI * 2;
+                        const distance = Math.random() * 100 + 50;
+                        firework.style.setProperty('--tx', `${Math.cos(angle) * distance}px`);
+                        firework.style.setProperty('--ty', `${Math.sin(angle) * distance}px`);
+                        
+                        document.body.appendChild(firework);
+                        
+                        setTimeout(() => {
+                            firework.remove();
+                        }, 2000);
+                    }
+                }, i * 200);
             }
         }
         
-        // DOM elements
-        const shayariText = document.getElementById('shayariText');
-        const senderInfo = document.getElementById('senderInfo');
-        const senderMessage = document.getElementById('senderMessage');
-        const inputLabel = document.getElementById('inputLabel');
-        const userNameInput = document.getElementById('userNameInput');
-        const whatsappShareBtn = document.getElementById('whatsappShareBtn');
-        const copyButton = document.getElementById('copyButton');
-        const linkContainer = document.getElementById('linkContainer');
-        const generatedLink = document.getElementById('generatedLink');
+        // Initial fireworks
+        createFireworks();
         
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            // Set random shayari
-            shayariText.textContent = getRandomShayari();
-            
-            // Check if sender parameter exists in URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const senderName = urlParams.get('sender');
-            
-            if (senderName) {
-                senderMessage.textContent = `यह शुभकामना ${decodeURIComponent(senderName)} ने भेजी है`;
-                senderInfo.style.display = 'block';
-                inputLabel.textContent = "अपना नाम दर्ज करें और अपने दोस्तों को भेजें:";
-                userNameInput.placeholder = "जैसे: आपका नाम";
-                userNameInput.value = "";
-            }
-        });
+        // Periodic fireworks
+        setInterval(createFireworks, 5000);
         
-        // WhatsApp share button click event
-        whatsappShareBtn.addEventListener('click', () => {
-            const userName = userNameInput.value.trim();
-            
+        // Share functionality
+        document.getElementById('shareBtn').addEventListener('click', function() {
+            const userName = document.getElementById('userName').value.trim();
             if (!userName) {
-                // Create a custom notification instead of alert
-                const notification = document.createElement('div');
-                notification.style.position = 'fixed';
-                notification.style.top = '20px';
-                notification.style.left = '50%';
-                notification.style.transform = 'translateX(-50%)';
-                notification.style.backgroundColor = '#ff4d4d';
-                notification.style.color = 'white';
-                notification.style.padding = '12px 20px';
-                notification.style.borderRadius = '30px';
-                notification.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
-                notification.style.zIndex = '1000';
-                notification.style.fontWeight = '600';
-                notification.textContent = 'कृपया अपना नाम दर्ज करें!';
-                
-                document.body.appendChild(notification);
-                
-                // Create particle effect at notification position
-                createParticleEffect(window.innerWidth / 2, 50);
-                
-                setTimeout(() => {
-                    notification.style.opacity = '0';
-                    notification.style.transition = 'opacity 0.5s ease';
-                    setTimeout(() => notification.remove(), 500);
-                }, 2000);
-                
+                alert('कृपया अपना नाम दर्ज करें!');
                 return;
             }
             
-            // Create particle effect at button position
-            const rect = whatsappShareBtn.getBoundingClientRect();
-            createParticleEffect(rect.left + rect.width / 2, rect.top + rect.height / 2);
+            createFireworks();
             
-            // Generate shareable link
-            const baseUrl = window.location.origin + window.location.pathname;
-            const encodedName = encodeURIComponent(userName);
-            const shareableLink = `${baseUrl}?sender=${encodedName}`;
+            const shayari = document.getElementById('shayariText').textContent;
+            const link = `${window.location.href.split('?')[0]}?sender=${encodeURIComponent(userName)}`;
             
-            // Show link container
-            generatedLink.value = shareableLink;
-            linkContainer.style.display = 'block';
-            copyButton.style.display = 'flex';
+            document.getElementById('generatedLink').value = link;
+            document.getElementById('linkBox').style.display = 'block';
             
-            // Create WhatsApp share link
-            const shareText = `🎉 आपको और आपके परिवार को ${userName} की ओर से रक्षाबंधन की हार्दिक शुभकामनाएं! इस विशेष कार्ड को देखें:`;
-            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText + '\n' + shareableLink)}`;
+            const shareText = `🎉 ${userName} ने आपको रक्षाबंधन की विशेष शुभकामनाएं भेजी हैं!\n\n${shayari}\n\nइस खास ग्रीटिंग को देखें: ${link}`;
             
-            // Open WhatsApp
-            window.open(whatsappUrl, '_blank');
+            window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, '_blank');
         });
         
-        // Copy button click event
-        copyButton.addEventListener('click', () => {
-            generatedLink.select();
-            generatedLink.setSelectionRange(0, 99999);
+        // Copy functionality
+        document.getElementById('copyBtn').addEventListener('click', function() {
+            const linkInput = document.getElementById('generatedLink');
+            linkInput.select();
+            document.execCommand('copy');
             
-            // Copy to clipboard
-            navigator.clipboard.writeText(generatedLink.value).then(() => {
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-check"></i> कॉपी हो गया!';
+            
+            setTimeout(() => {
+                this.innerHTML = originalText;
+            }, 2000);
+        });
         
+        // Check for sender name in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const senderName = urlParams.get('sender');
+        
+        if (senderName) {
+            document.getElementById('shayariText').textContent = shayaris[Math.floor(Math.random() * shayaris.length)];
+            document.getElementById('userName').placeholder = "आपका नाम";
+            document.querySelector('h1').textContent = `${decodeURIComponent(senderName)} ने आपको रक्षाबंधन की शुभकामनाएं भेजी हैं!`;
+        }
+    </script>
+</body>
+</html>
